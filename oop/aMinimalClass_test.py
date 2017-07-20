@@ -7,6 +7,16 @@ def f(x):
 class Robot:
   pass
 
+class A:
+  def __init__(self, name="peter"):
+    self.name = name
+
+  def sayHi(self):
+    if self.name:
+      return ("Hi, I am " + self.name)
+    else:
+      return ("Hi, I am a robot without a name")
+
 class AMinimalClass_test(unittest.TestCase):
 
   def test(self):
@@ -40,10 +50,15 @@ class AMinimalClass_test(unittest.TestCase):
     #  AttributeError: 'Robot' object has no attribute 'energy'
     self.assertEqual(getattr(x, 'energy', 100), 100)
 
-
     for i in range(10):
       f(i)
     self.assertEqual(f.counter, 10)
+
+  def testInit(self):
+    ''' test init '''
+    x = A()
+    self.assertEqual(x.name, 'peter')
+    self.assertEqual(x.sayHi(), 'Hi, I am peter')
 
 if __name__ == '__main__':
   unittest.main()
