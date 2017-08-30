@@ -4,4 +4,4 @@ services:
     image: python:3.6.1
     command: tail -f /dev/null
     volumes:
-      - ./:/notebooks
+      - ./src:/notebooks
